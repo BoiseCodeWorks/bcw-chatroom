@@ -1,0 +1,50 @@
+<html ng-app="fireChat">
+
+<head>
+	<meta charset="UTF-8">
+	<title>FireChat</title>
+	<link rel="stylesheet" href="/assets/plugins/bootstrap.css">
+	<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="container content" ng-controller="FirechatController as vm" style="background-image: url('assets/img/chat.jpg')">
+	<h1>
+		BCW - ChatRoom
+	</h1>
+	<div class="alert alert-warning" ng-if="!vm.author">
+		<p>Please tell me who you are</p>
+		<div class="input-group">
+			<input class="form-control" ng-model="vm.authorName" placeholder="Your name here....." />
+			<div class="input-group-btn">
+				<button type="button" ng-click="vm.setAuthor()" class="btn btn-success">Let's Go!</button>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="stream" ng-if="vm.author">
+		<div class="chat" ng-repeat="chat in vm.stream">
+			<div class="alert alert-info">
+				{{chat.body}}
+				<div>
+					<small class="author">{{chat.author}} - {{chat.timestamp | date:'medium'}}</small>
+				</div>
+			</div>
+		</div>
+		<div class="input-group chatbar">
+			<input type="text" ng-model="vm.newChat" class="form-control" />
+			<div class="input-group-btn">
+				<button type="button" ng-click="vm.sendChat()" class="btn btn-success">Send Chat <i class="glyphicon glyphicon-send"></i></button>
+			</div>
+		</div>
+	</div>
+
+	<script src="/assets/plugins/angular.js"></script>
+	<script src="/assets/plugins/firebase.js"></script>
+
+	<script src="/app/app.js"></script>
+	<script src="/app/firechat-controller.js"></script>
+	<script src="/app/firechat-service.js"></script>
+</body>
+
+</html>

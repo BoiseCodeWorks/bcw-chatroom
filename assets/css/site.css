@@ -1,0 +1,16 @@
+.stream{
+	position: relative;
+	border: 1px solid black;
+	height: 500px;
+	overflow-y: scroll;
+}
+.chat{
+	margin: 10px 0;
+}
+.author{
+	text-decoration: underline;
+}
+.chatbar{
+	position: absolute;
+	bottom: 0;
+}
