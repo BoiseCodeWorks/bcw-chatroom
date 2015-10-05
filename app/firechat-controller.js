@@ -1,6 +1,6 @@
 app.controller('FirechatController', FirechatController);
 
-function FirechatController(config, FirechatService){
+function FirechatController(config, FirechatService, $scope){
 	var vm = this;
 
 	vm.setAuthor = function(){
@@ -10,7 +10,9 @@ function FirechatController(config, FirechatService){
 	
 	var stream = FirechatService.getChatStream();
 	stream.on('value', function(data){
-		vm.stream = data.val();
+		$scope.$apply(function(){
+			vm.stream = data.val()
+		});
 	});
 	
 	vm.sendChat = function(){
